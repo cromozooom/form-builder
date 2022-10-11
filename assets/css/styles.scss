@@ -1,0 +1,19 @@
+@use "sass:color";
+@use "sass:map";
+@use "sass:math";
+
+@import "../../node_modules/tailwindcss/base";
+@import "../../node_modules/tailwindcss/components";
+@import "../../node_modules/tailwindcss/utilities";
+
+@import "variables";
+
+@layer components {
+  @import "mixins";
+  @import "components/font-awesome/variables-fa"; // add path to font awesome files
+  @import "components/font-awesome/duotone";
+  @import "components/font-awesome/regular";
+  @import "components/font-awesome/solid";
+  @import "components/font-awesome/light";
+  @import "components/font-awesome/fontawesome";
+}

@@ -1,0 +1,11 @@
+baseURL = 'https://comfy-cajeta-9396a5.netlify.app/'
+languageCode = 'en-us'
+title = 'My New Hugo Site'
+theme = 'form-builder'
+
+disableKinds = ["taxonomy"]
+ignoreErrors = ["error-disable-taxonomy"] # you will get a console error message without this
+
+# [params]
+#     theme = 'default'
+#     sideMenuTheme = 'default'
