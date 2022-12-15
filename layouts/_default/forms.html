@@ -122,31 +122,65 @@
         maxCol: 20,
         types: [
           {
-            id: 1,
-            type: 'input'
-          },
-          {
-            id: 2,
+            id: 0,
             type: 'text'
           },
           {
+            id: 1,
+            type: 'password'
+          },
+          {
+            id: 2,
+            type: 'tel'},
+          {
             id: 3,
+            type: 'email'},
+          {
+            id: 4,
+            type: 'number'},
+          {
+            id: 5,
+            type: 'url'
+          },
+
+          {
+            id: 6,
             type: 'select'
           },
           {
-            id: 4,
+            id: 7,
+          type: 'date'
+          },
+          {
+            id: 8,
+          type: 'datetime-local'
+          },
+          {
+            id: 9,
+          type: 'month'
+          },
+          {
+            id: 10,
+          type: 'week'
+          },
+          {
+            id: 11,
+          type: 'time'
+          },
+          {
+            id: 12,
             type: 'checkbox'
           },
           {
-            id: 5,
+            id: 13,
             type: 'radio'
           },
           {
-            id: 6,
+            id: 14,
             type: 'toggle'
           },
           {
-            id: 7,
+            id: 15,
             type: 'fileInput'
           }
         ]
@@ -274,7 +308,7 @@
           class="mx-auto  px-3"
         >
           <div
-            x-data="{ defaultFieldType: 'input'}"
+            x-data="{ defaultFieldType: 'text'}"
             :class="{
             'grid-cols-1' : col === 1, 
             'grid-cols-1 lg:grid-cols-2' : col === 2,

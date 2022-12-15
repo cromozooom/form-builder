@@ -1,13 +1,13 @@
-%devall,
-.devall {
+%xray,
+.xray {
   outline: 1px solid red;
   * {
     outline: 1px solid red;
   }
 }
 
-.devall {
-  @extend %devall;
+.xray {
+  @extend %xray;
 }
 
 .dev {

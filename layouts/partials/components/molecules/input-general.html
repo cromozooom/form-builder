@@ -1,0 +1,26 @@
+<!-- :class="{ 'bg-primary-500': index % 2 === 1, 'bg-green-500':  index % 2 == 0 }" -->
+<div
+  :class="{ 
+    'type-text' : fieldType = 'text',
+    'hasError': !hideError
+}"
+  class="w-full flex-col py-2 xl:flex-row"
+>
+  <label :class="inline ? 'flex-col w-full' : 'flex-row  w-full'" for="title" class="form-label mb-0 flex">
+    <span :class="inline ? 'w-full' : 'w-1/2'" class="min-h-10 pt-2 dark:text-white"> This is a label </span>
+    <div :class="inline ? 'w-full' : 'w-1/2'">
+      <input
+        :type="fieldType"
+        :class="{
+            'w-[6rem]' : fieldType === 'number',
+        }"
+        class="form-input block w-full dark:bg-slate-800 dark:text-white"
+        :placeholder="
+        fieldType === 'number' ? '0' : fieldType
+        "
+      />
+      <div id="emailHelp" class="mt-1 w-full text-sm text-slate-500">This message is important for us</div>
+      <div x-show="!hideError" id="emailHelp" class="mt-1 w-full text-sm text-red-600">This message is important for us</div>
+    </div>
+  </label>
+</div>

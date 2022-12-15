@@ -1,0 +1,27 @@
+<div
+  class="block w-full"
+  x-show="
+    fieldType === 'text' || 
+    fieldType === 'number' || 
+    fieldType === 'tel' ||
+    fieldType === 'url' ||
+    fieldType === 'password' ||
+    fieldType === 'email'
+    "
+>
+  {{ partial "components/molecules/input-general.html" . }}
+</div>
+
+<div class="block w-full" x-show="fieldType === 'select'">select</div>
+
+<div class="block w-full" x-show="fieldType === 'date'">date</div>
+<div class="block w-full" x-show="fieldType === 'datetime'">datetime</div>
+<div class="block w-full" x-show="fieldType === 'month'">month</div>
+<div class="block w-full" x-show="fieldType === 'week'">week</div>
+<div class="block w-full" x-show="fieldType === 'time'">time</div>
+
+<div class="block w-full" x-show="fieldType === 'checkbox'">checkbox</div>
+<div class="block w-full" x-show="fieldType === 'radio'">radio</div>
+<div class="block w-full" x-show="fieldType === 'toggle'">toggle</div>
+
+<div class="block w-full" x-show="fieldType === 'fileInput'">fileInput</div>

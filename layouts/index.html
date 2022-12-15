@@ -3,18 +3,19 @@
   <div
     class="xdevall"
     x-data="{ 
-  sections: 1,
-  hideControls: false,
-  hideAll: true,
-  
-  hideLabel: false,
-  hideSpan: true,
-  hideInline: true,
-  hideType: true,
-}"
+    sections: 1,
+    hideControls: false,
+    hideAll: true,
+    
+    hideLabel: false,
+    hideSpan: true,
+    hideInline: true,
+    hideType: true,
+    hideError: true,
+  }"
   >
     <div class="flex w-full items-center justify-between bg-slate-300 px-2">
-      <span>
+      <div class="flex gap-2">
         <a href="/">
           <svg width="118" height="28" viewBox="0 0 118 28" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path
@@ -28,7 +29,34 @@
             <rect x="1" y="1" width="54" height="26" stroke="#fff" stroke-width="3" />
           </svg>
         </a>
-      </span>
+        <button
+          class="pl-2"
+          x-data="{
+          toggle: () => {
+            if (localStorage.theme === 'dark') {
+              localStorage.theme = 'light';
+              document.documentElement.classList.remove('dark');
+            } else {
+              localStorage.theme = 'dark';
+              document.documentElement.classList.add('dark');
+            }
+          },
+        }"
+          @click="toggle"
+        >
+          <span class="block text-white dark:hidden dark:text-red-500">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-brightness-high h-[1.5rem] w-[1.5rem]" viewBox="0 0 16 16">
+              <path d="M8 11a3 3 0 1 1 0-6 3 3 0 0 1 0 6zm0 1a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0zm0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13zm8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5zM3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8zm10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0zm-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zm9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707zM4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708z" />
+            </svg>
+          </span>
+          <span class="hidden text-yellow-300 dark:block">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-moon-stars-fill h-[1.5rem] w-[1.5rem]" viewBox="0 0 16 16">
+              <path d="M6 .278a.768.768 0 0 1 .08.858 7.208 7.208 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277.527 0 1.04-.055 1.533-.16a.787.787 0 0 1 .81.316.733.733 0 0 1-.031.893A8.349 8.349 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71 0 4.266 2.114 1.312 5.124.06A.752.752 0 0 1 6 .278z" />
+              <path d="M10.794 3.148a.217.217 0 0 1 .412 0l.387 1.162c.173.518.579.924 1.097 1.097l1.162.387a.217.217 0 0 1 0 .412l-1.162.387a1.734 1.734 0 0 0-1.097 1.097l-.387 1.162a.217.217 0 0 1-.412 0l-.387-1.162A1.734 1.734 0 0 0 9.31 6.593l-1.162-.387a.217.217 0 0 1 0-.412l1.162-.387a1.734 1.734 0 0 0 1.097-1.097l.387-1.162zM13.863.099a.145.145 0 0 1 .274 0l.258.774c.115.346.386.617.732.732l.774.258a.145.145 0 0 1 0 .274l-.774.258a1.156 1.156 0 0 0-.732.732l-.258.774a.145.145 0 0 1-.274 0l-.258-.774a1.156 1.156 0 0 0-.732-.732l-.774-.258a.145.145 0 0 1 0-.274l.774-.258c.346-.115.617-.386.732-.732L13.863.1z" />
+            </svg>
+          </span>
+        </button>
+      </div>
 
       <div class="flex h-full items-center">
         <button
@@ -86,6 +114,12 @@
             <path d="M80 144C80 126.3 94.33 112 112 112C129.7 112 144 126.3 144 144C144 161.7 129.7 176 112 176C94.33 176 80 161.7 80 144zM197.5 32C214.5 32 230.7 38.74 242.7 50.75L418.7 226.7C443.7 251.7 443.7 292.3 418.7 317.3L285.3 450.7C260.3 475.7 219.7 475.7 194.7 450.7L18.75 274.7C6.743 262.7 0 246.5 0 229.5V80C0 53.49 21.49 32 48 32L197.5 32zM52.69 240.8L228.7 416.8C234.9 423.1 245.1 423.1 251.3 416.8L384.8 283.3C391.1 277.1 391.1 266.9 384.8 260.7L208.8 84.69C205.8 81.69 201.7 80 197.5 80H48V229.5C48 233.7 49.69 237.8 52.69 240.8L52.69 240.8z" />
           </svg>
         </button>
+        <button title="hide error" class="h-full rounded p-2 hover:bg-slate-100" x-on:click="hideError = !hideError">
+          <svg :class="!hideError ? 'fill-slate-900' : 'fill-slate-400' " class="h-[12px] w-[12px] " xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+            <!--! Font Awesome Pro 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
+            <path d="M80 144C80 126.3 94.33 112 112 112C129.7 112 144 126.3 144 144C144 161.7 129.7 176 112 176C94.33 176 80 161.7 80 144zM197.5 32C214.5 32 230.7 38.74 242.7 50.75L418.7 226.7C443.7 251.7 443.7 292.3 418.7 317.3L285.3 450.7C260.3 475.7 219.7 475.7 194.7 450.7L18.75 274.7C6.743 262.7 0 246.5 0 229.5V80C0 53.49 21.49 32 48 32L197.5 32zM52.69 240.8L228.7 416.8C234.9 423.1 245.1 423.1 251.3 416.8L384.8 283.3C391.1 277.1 391.1 266.9 384.8 260.7L208.8 84.69C205.8 81.69 201.7 80 197.5 80H48V229.5C48 233.7 49.69 237.8 52.69 240.8L52.69 240.8z" />
+          </svg>
+        </button>
       </div>
       <div class="flex items-center gap-2">
         <div>
@@ -122,31 +156,65 @@
       maxCol: 20,
       types: [
         {
-          id: 1,
-          type: 'input'
-        },
-        {
-          id: 2,
+          id: 0,
           type: 'text'
         },
         {
+          id: 1,
+          type: 'password'
+        },
+        {
+          id: 2,
+          type: 'tel'},
+        {
           id: 3,
+          type: 'email'},
+        {
+          id: 4,
+          type: 'number'},
+        {
+          id: 5,
+          type: 'url'
+        },
+
+        {
+          id: 6,
           type: 'select'
         },
         {
-          id: 4,
+          id: 7,
+        type: 'date'
+        },
+        {
+          id: 8,
+        type: 'datetime-local'
+        },
+        {
+          id: 9,
+        type: 'month'
+        },
+        {
+          id: 10,
+        type: 'week'
+        },
+        {
+          id: 11,
+          type: 'time'
+        },
+        {
+          id: 12,
           type: 'checkbox'
         },
         {
-          id: 5,
+          id: 13,
           type: 'radio'
         },
         {
-          id: 6,
+          id: 14,
           type: 'toggle'
         },
         {
-          id: 7,
+          id: 15,
           type: 'fileInput'
         }
       ]
@@ -274,7 +342,7 @@
           class="mx-auto  px-3"
         >
           <div
-            x-data="{ defaultFieldType: 'input'}"
+            x-data="{ defaultFieldType: 'text'}"
             :class="{
           'grid-cols-1' : col === 1, 
           'grid-cols-1 lg:grid-cols-2' : col === 2,
@@ -299,42 +367,46 @@
           'grid-cols-1 lg:grid-cols-[repeat(21, minmax(0, 1fr))]' : col === 21,
           'grid-cols-1 lg:grid-cols-[repeat(22, minmax(0, 1fr))]' : col === 22
       }"
-            class="xdev grid gap-4"
+            class="xdev grid gap-x-4"
           >
             <template title="fields" x-for="i in fields">
               <div
-                x-data="{span: 1, inline: false, fieldType: defaultFieldType }"
+                x-data="{
+                  span: 1,
+                  inline: false,
+                  fieldType: defaultFieldType
+                }"
                 x-show="maxCol <= 22"
                 :class="{
-              'col-span-1' : span === 1,
-              'col-span-2' : span === 2,
-              'col-span-3' : span === 3,
-              'col-span-4' : span === 4,
-              'col-span-5' : span === 5,
-              'col-span-6' : span === 6,
-              'col-span-7' : span === 7,
-              'col-span-8' : span === 8,
-              'col-span-9' : span === 9,
-              'col-span-10' : span === 10,
-              'col-span-12' : span === 12,
-              'col-span-13' : span === 13,
-              'col-span-14' : span === 14,
-              'col-span-15' : span === 15,
-              'col-span-16' : span === 16,
-              'col-span-17' : span === 17,
-              'col-span-18' : span === 18,
-              'col-span-19' : span === 19,
-              'col-span-20' : span === 20,
-              'col-span-11' : span === 21,
-              'col-span-12' : span === 22,
-              'grid grid-cols-2' : inline,
-              'gap-4': inline === true
-            }"
-                class="mb-2 rounded pt-2 hover:ring hover:ring-blue-100 hover:ring-offset-2"
+                  'col-span-1' : span === 1,
+                  'col-span-2' : span === 2,
+                  'col-span-3' : span === 3,
+                  'col-span-4' : span === 4,
+                  'col-span-5' : span === 5,
+                  'col-span-6' : span === 6,
+                  'col-span-7' : span === 7,
+                  'col-span-8' : span === 8,
+                  'col-span-9' : span === 9,
+                  'col-span-10' : span === 10,
+                  'col-span-12' : span === 12,
+                  'col-span-13' : span === 13,
+                  'col-span-14' : span === 14,
+                  'col-span-15' : span === 15,
+                  'col-span-16' : span === 16,
+                  'col-span-17' : span === 17,
+                  'col-span-18' : span === 18,
+                  'col-span-19' : span === 19,
+                  'col-span-20' : span === 20,
+                  'col-span-11' : span === 21,
+                  'col-span-12' : span === 22
+                }"
+                class="relative flex flex-col rounded-sm hover:ring hover:ring-slate-200 hover:ring-offset-1 dark:hover:ring-slate-700"
                 x-id="['field']"
               >
-                {{ partial "components/molecules/form-label.html" }}
-                <div x-show="fieldType === 'input'">
+                {{ partial "components/molecules/form-controll.html" }}
+                <!-- {{ partial "components/molecules/form-label.html" }} -->
+                {{ partial "components/molecules/_field.html" }}
+                <!-- <div x-show="fieldType === 'input'">
                   <input :placeholder="fieldType" type="text" :id="$id('field')" class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 " placeholder="John" required />
                 </div>
                 <div x-show="fieldType === 'text'">
@@ -384,7 +456,7 @@
                       <label :for="$id('field') + 2" class="ml-2 text-sm font-medium text-gray-900 ">Checked state</label>
                     </div>
                   </div>
-                </div>
+                </div> -->
                 <p class="mt-2 rounded bg-red-50 p-2 text-xs italic text-red-500" x-show="col < span && !inline">span is bigger than columns</p>
               </div>
               <template> input </template>

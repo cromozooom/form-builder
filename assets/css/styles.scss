@@ -10,6 +10,7 @@
 
 @layer components {
   @import "mixins";
+  @import "components/form/components"; // MY little form
   @import "components/font-awesome/variables-fa"; // add path to font awesome files
   @import "components/font-awesome/duotone";
   @import "components/font-awesome/regular";
